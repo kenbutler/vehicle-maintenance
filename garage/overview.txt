@@ -1,0 +1,15 @@
+General
+Inspect and Lubricate,06/17/2017,35725,5000,6,
+Replace Windshield Wipers,,,0,0,
+Fluids
+Oil and Filter Change,06/17/2017,35725,5000,6,
+Brake Fluid Change,10/07/2017,25214,20000,24,
+Replace CVT Fluid,,,30000,36,
+Tires
+New Tires,06/17/2017,35725,30000,0,
+Tire Rotation,06/10/2017,35424,5000,6,
+Filters and A/C
+Coolant Fluid Exchange,,,0,0,
+Replace Air Filter,06/17/2017,35725,18000,0,
+Replace In-Cabin Microfilter,06/17/2017,35725,15000,18,
+Replace Engine Air Filter,05/20/2016,21066,15000,18,
