@@ -59,7 +59,7 @@ public class Garage {
         Overview menu = new Overview();
         CurrentState myState = new CurrentState();
 
-        tabbedPane.addTab("Overview",  null, menu, null);
+        //tabbedPane.addTab("Overview",  null, menu, null);
         tabbedPane.addTab("History", new JPanel());
 
 
