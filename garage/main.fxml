@@ -3,6 +3,63 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import java.net.URL?>
 <GridPane fx:controller="garage.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <!-- Headers -->
+    <Label text="Last Change" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="2" id="top"/>
+    <Label text="Date" GridPane.rowIndex="1" GridPane.columnIndex="1" id="header"/>
+    <Label text="Miles" GridPane.rowIndex="1" GridPane.columnIndex="2" id="header"/>
+    <Label text="Limits" GridPane.rowIndex="0" GridPane.columnIndex="3" GridPane.columnSpan="2" id="top"/>
+    <Label text="Miles" GridPane.rowIndex="1" GridPane.columnIndex="3" id="header"/>
+    <Label text="Months" GridPane.rowIndex="1" GridPane.columnIndex="4" id="header"/>
+
+    <!-- Categories and Items -->
+    <!-- General -->
+    <Label text="General" GridPane.rowIndex="2" GridPane.columnIndex="0" id="category" />
+        <Label text="   Inspect and Lubricate" GridPane.rowIndex="3" GridPane.columnIndex="0" id="item" />
+            <Label text="abc" GridPane.rowIndex="3" GridPane.columnIndex="1" id="data" />
+            <Label text="abc" GridPane.rowIndex="3" GridPane.columnIndex="2" id="data" />
+            <Label text="abc" GridPane.rowIndex="3" GridPane.columnIndex="3" id="data" />
+            <Label text="abc" GridPane.rowIndex="3" GridPane.columnIndex="4" id="data" />
+        <Label text="   Replace Windshield Wipers" GridPane.rowIndex="4" GridPane.columnIndex="0" id="item" />
+            <Label text="abc" GridPane.rowIndex="4" GridPane.columnIndex="1" id="data" />
+            <Label text="abc" GridPane.rowIndex="4" GridPane.columnIndex="2" id="data" />
+            <Label text="abc" GridPane.rowIndex="4" GridPane.columnIndex="3" id="data" />
+            <Label text="abc" GridPane.rowIndex="4" GridPane.columnIndex="4" id="data" />
+    <!-- Fluids -->
+    <Label text="Fluids" GridPane.rowIndex="5" GridPane.columnIndex="0" id="category" />
+        <Label text="   Oil and Filter Change" GridPane.rowIndex="6" GridPane.columnIndex="0" id="item" />
+            <Label text="abc" GridPane.rowIndex="6" GridPane.columnIndex="1" id="data" />
+            <Label text="abc" GridPane.rowIndex="6" GridPane.columnIndex="2" id="data" />
+            <Label text="abc" GridPane.rowIndex="6" GridPane.columnIndex="3" id="data" />
+            <Label text="abc" GridPane.rowIndex="6" GridPane.columnIndex="4" id="data" />
+        <Label text="   Brake Fluid Change" GridPane.rowIndex="7" GridPane.columnIndex="0" id="item" />
+            <Label text="abc" GridPane.rowIndex="7" GridPane.columnIndex="1" id="data" />
+            <Label text="abc" GridPane.rowIndex="7" GridPane.columnIndex="2" id="data" />
+            <Label text="abc" GridPane.rowIndex="7" GridPane.columnIndex="3" id="data" />
+            <Label text="abc" GridPane.rowIndex="7" GridPane.columnIndex="4" id="data" />
+        <Label text="   Replace CVT Fluid" GridPane.rowIndex="8" GridPane.columnIndex="0" id="item" />
+            <Label text="abc" GridPane.rowIndex="8" GridPane.columnIndex="1" id="data" />
+            <Label text="abc" GridPane.rowIndex="8" GridPane.columnIndex="2" id="data" />
+            <Label text="abc" GridPane.rowIndex="8" GridPane.columnIndex="3" id="data" />
+            <Label text="abc" GridPane.rowIndex="8" GridPane.columnIndex="4" id="data" />
+    <!-- Tires -->
+    <Label text="Tires" GridPane.rowIndex="9" GridPane.columnIndex="0" id="category" />
+        <Label text="   New Tires" GridPane.rowIndex="10" GridPane.columnIndex="0" id="item" />
+            <Label text="abc" GridPane.rowIndex="10" GridPane.columnIndex="1" id="data" />
+            <Label text="abc" GridPane.rowIndex="10" GridPane.columnIndex="2" id="data" />
+            <Label text="abc" GridPane.rowIndex="10" GridPane.columnIndex="3" id="data" />
+            <Label text="abc" GridPane.rowIndex="10" GridPane.columnIndex="4" id="data" />
+        <Label text="   Tire Rotation" GridPane.rowIndex="11" GridPane.columnIndex="0" id="item" />
+            <Label text="abc" GridPane.rowIndex="11" GridPane.columnIndex="1" id="data" />
+            <Label text="abc" GridPane.rowIndex="11" GridPane.columnIndex="2" id="data" />
+            <Label text="abc" GridPane.rowIndex="11" GridPane.columnIndex="3" id="data" />
+            <Label text="abc" GridPane.rowIndex="11" GridPane.columnIndex="4" id="data" />
+
+    <!-- CSS -->
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+
 </GridPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="garage.Overview"
+            prefHeight="400.0" prefWidth="600.0">
+    <!-- Headers -->
+    <Label text="Item" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Label text="Last Change" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+    <Label text="Date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label text="Miles" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label text="Limits" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+    <Label text="Miles" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Label text="Months" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+</GridPane>

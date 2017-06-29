@@ -1,0 +1,36 @@
+#top {
+    -fx-font-size: 20;
+    -fx-alignment: center;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
+    -fx-min-width: 310px;
+}
+
+#header {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-min-width: 150px;
+    -fx-alignment: center;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+
+#category {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-min-width: 250px;
+}
+
+#item {
+    -fx-font-size: 16;
+    -fx-indent: 50;
+    -fx-min-width: 250px;
+    -fx-indent: 10;
+    -fx-text-fill: blue;
+}
+
+#data {
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-min-width: 150;
+}

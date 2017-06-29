@@ -1,6 +1,7 @@
 package garage;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    @FXML
     public Overview overview;
 
     @Override
@@ -21,11 +23,11 @@ public class Main extends Application {
 
         initialize();
 
-        //Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        StackPane root = new StackPane();
-        addElements(root);
+        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        //StackPane root = new StackPane();
+        //addElements(root);
         primaryStage.setTitle("Vehicle Garage");
-        primaryStage.setScene(new Scene(root, 500, 700));
+        primaryStage.setScene(new Scene(root, 1200, 500));
         primaryStage.show();
     }
 
@@ -44,9 +46,11 @@ public class Main extends Application {
         // TODO
     }
 
-    private void addElements(StackPane root) {
+    /*
+    private void addElements(Parent root) {
         root.getChildren().add(overview);
     }
+    */
 
 
     public static void main(String[] args) {
