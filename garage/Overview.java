@@ -3,47 +3,63 @@ package garage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by kenbutler on 6/20/17.
  */
-public class Overview extends GridPane {
+public class Overview {
+
+    public class Item {
+        String category;
+        String title;
+        Date lastChangeDate;
+        int lastChangeMiles;
+        int limitMiles;
+        int limitMonths;
+
+        public Item(String[] lineArray) throws ParseException {
+            category = lineArray[0];
+            title = lineArray[1];
+            if (lineArray[2].length() > 0) {
+                lastChangeDate = new SimpleDateFormat("dd/MM/yyyy").parse(lineArray[2]);
+            } else {
+                lastChangeDate = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1900");
+            }
+            if (lineArray[3].length() > 0) {
+                lastChangeMiles = Integer.parseInt(lineArray[3]);
+            } else {
+                lastChangeMiles = -1;
+            }
+            limitMiles = Integer.parseInt(lineArray[4]);
+            limitMonths = Integer.parseInt(lineArray[5]);
+        }
+
+        public String simpleDate() {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            return df.format(this.lastChangeDate);
+        }
+    }
+
     private boolean DEBUG = true;
-    private String baseLocation = "/Users/kenbutler/IdeaProjects/VehicleMaintenance/src/";
-    String[] columnNames = new String[5];
-    Object[][] data = null;
+    private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
+    //Object[] data = null;
+    ArrayList<Object> data = new ArrayList<>();
     int totalRows, totalCols;
 
     public Overview() throws IOException {
-        initializeHeaders();
         ReadData("overview.txt");
-        //SetGrid();
-    }
-
-    private void initializeHeaders() {
-        columnNames[0] = "ITEM";
-        columnNames[1] = "DATE\nLAST CHANGED";
-        columnNames[2] = "MILES\nLAST CHANGED";
-        columnNames[3] = "LIMIT\n(MILES)";
-        columnNames[4] = "LIMIT\n(MONTHS)";
-    }
-
-    private Label makeCategoryLabel(String name) {
-        Label lbl = new Label(name);
-        lbl.setId("categoryLabel"); // TODO
-        return lbl;
-    }
-
-    private Label makeItemLabel(String name) {
-        Label lbl = new Label(name);
-        lbl.setId("itemLabel"); // TODO
-        return lbl;
     }
 
     public void ReadData (String csvFile) throws IOException {
@@ -55,58 +71,32 @@ public class Overview extends GridPane {
         try {
             br = new BufferedReader(new FileReader(baseLocation + csvFile));
 
-            // Initialize row count
-            int totalRows = 0;
-
             while ((line = br.readLine()) != null) {
 
                 // Split the line by way of commas
                 String[] lineArray = line.split(cvsSplitBy);
-
-                if (DEBUG) {System.out.format("Line array length: %d\n", lineArray.length);}
-
-                if (lineArray.length > 1) { // Item line
-
-                    for (int i = 0; i < lineArray.length; i++) { // Parse items
-
-                        if ((i >= 3) && (Integer.parseInt(lineArray[i]) == 0)) {
-
-                            // Limit column without limit
-                            if (DEBUG) {System.out.format("N/A %s\t", lineArray[i]);}
-                            this.add(makeItemLabel("N/A"),i+1,totalRows+1);
-
-                        } else if (lineArray[i].length() > 0) {
-
-                            // Normal item value
-                            if (DEBUG) {System.out.format("%s\t", lineArray[i]);}
-                            this.add(makeItemLabel(lineArray[i]),i+1,totalRows+1);
-
-                        } else {
-
-                            // Empty item value
-                            if (DEBUG) {System.out.print("N/A\t");}
-                            this.add(makeItemLabel("N/A"),i+1,totalRows+1);
-
-                        }
-
-                    }
-                    if (DEBUG) {System.out.format("\n");}
-                    //addEntry(lineArray);
-
-                } else if (lineArray.length == 1) { // Category
-
-                    if (DEBUG) {System.out.format("CATEGORY - %s\n", lineArray[0]);}
-                    //mainPanel[row][0].add(makeCategoryLabel(lineArray[0]));
-                    this.add(makeCategoryLabel(lineArray[0]),0,totalRows+1);
-
-                }
-                totalRows++; // Increment
+                data.add(new Item(lineArray));
 
             } // End while loop of CSV read
+
+            if (DEBUG) {
+                System.out.print("***** DEBUG *****\n");
+                System.out.format("data size is %d\n", data.size());
+                for (int i = 0; i < data.size(); i++) {
+                    Item temp = (Item) data.get(i);
+                    System.out.format("%s, %s, %s, %d, %d, %d\n",
+                            temp.category, temp.title,
+                            temp.simpleDate(), temp.lastChangeMiles,
+                            temp.limitMiles, temp.limitMonths);
+                }
+                System.out.print("***** END DEBUG *****\n\n");
+            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         } finally {
             if (br != null) {
