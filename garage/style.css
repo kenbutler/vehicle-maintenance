@@ -29,6 +29,10 @@
     -fx-text-fill: blue;
 }
 
+#item:hover {
+    -fx-cursor: hand;
+}
+
 #data {
     -fx-background-color: white;
     -fx-alignment: center;

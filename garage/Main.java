@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    @FXML
     public Overview overview;
 
     @Override
@@ -24,6 +23,7 @@ public class Main extends Application {
         initialize();
 
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+
         //StackPane root = new StackPane();
         //addElements(root);
         primaryStage.setTitle("Vehicle Garage");
