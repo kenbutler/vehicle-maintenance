@@ -60,6 +60,7 @@ public class Overview {
 
     public Overview() throws IOException {
         ReadData("overview.txt");
+        LoadData();
     }
 
     public void ReadData (String csvFile) throws IOException {
@@ -80,7 +81,7 @@ public class Overview {
             } // End while loop of CSV read
 
             if (DEBUG) {
-                System.out.print("***** DEBUG *****\n");
+                System.out.print("***** DEBUG - Data read from overview.txt *****\n");
                 System.out.format("data size is %d\n", data.size());
                 for (int i = 0; i < data.size(); i++) {
                     Item temp = (Item) data.get(i);
@@ -109,5 +110,13 @@ public class Overview {
         } // End try to populate / exception handler
 
     } // End ReadData()
+
+    public void LoadData() {
+
+        // Loop through data and load to
+        for (int i=0; i < data.size(); i++) {
+            //Controller.setData(data[i]);
+        }
+    }
 
 }
