@@ -16,7 +16,7 @@ public class Overview extends ArrayList<Object> {
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
     public Overview() throws IOException {
-        ReadData("overview.txt");
+        ReadData("overview.csv");
         LoadData();
     }
 
