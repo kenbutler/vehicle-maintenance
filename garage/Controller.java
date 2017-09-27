@@ -1,8 +1,9 @@
 package garage;
 
-import java.util.Map;
-import javafx.scene.Node;
 import java.util.HashMap;
+import java.util.Map;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -14,6 +15,9 @@ public class Controller {
     public Label inspect;
     public Label replaceWipers;
     public GridPane myGrid;
+
+    @FXML
+    private GridPane tireRotation;
 
     private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
         for (Node node : gridPane.getChildren()) {
@@ -53,7 +57,7 @@ public class Controller {
 
     public Controller() {
         initMap();
-        System.out.print("TESTINTGIASKDFJKSJAFKASDJFKASDJF\n");
+        System.out.print("**** INITIALIZING CONTROLLER ****\n");
         //initGrid();
     }
 
@@ -64,10 +68,6 @@ public class Controller {
         int row = map.get(label.getText());
         System.out.format("Label clicked was (%d) %s\n", label.getText(), row);
         //grid.getChildren().
-
-    }
-
-    public void setData(Overview.Item item) {
 
     }
 }

@@ -12,10 +12,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class Main extends Application {
 
-    public Overview overview;
+    public Overview overview = new Overview();
+    public Data data = new Data();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -31,14 +33,14 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private void initialize() throws IOException {
+    private void initialize() throws IOException, ParseException {
         initializeOverview();
         initializeLogs(); // TODO
     }
 
-    private void initializeOverview() throws IOException {
+    private void initializeOverview() throws IOException, ParseException {
         // Add overview grid
-        overview = new Overview();
+        //overview = new Overview();
     }
 
     private void initializeLogs() throws IOException {
@@ -51,6 +53,9 @@ public class Main extends Application {
         root.getChildren().add(overview);
     }
     */
+
+    public Main() throws IOException {
+    }
 
 
     public static void main(String[] args) {

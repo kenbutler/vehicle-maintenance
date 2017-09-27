@@ -1,24 +1,52 @@
 package garage;
 
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by kenbutler on 9/26/17.
  */
-public class Item extends GridPane {
+public class Item {
 
-    public Item(String title) {
-        this.addColumn(0, new CustomLabel(title));
-        this.addColumn(1, new CustomLabel("a"));
-        this.addColumn(2, new CustomLabel("b"));
-        this.addColumn(3, new CustomLabel("c"));
+    private String title;
+    private Date date;
+    private Integer mileage;
+
+    public Item(String[] lineArray) throws ParseException {
+        date = new SimpleDateFormat("dd/MM/yyyy").parse(lineArray[0]);
+        mileage = Integer.parseInt(lineArray[1]);
+        title = lineArray[2];
+        // Price TODO
+        // Notes TODO
     }
 
-    public class CustomLabel extends Label {
-        public CustomLabel(String title) {
-            this.setText(title);
-            this.setId("item");
-        }
+    public String getTitle() {
+        return this.title;
+    }
+    public Boolean setTitle(String str) {
+        this.title = str;
+        return true;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+    public String getDateString() {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        return df.format(this.date);
+    }
+    public Boolean setDate(Date date) {
+        this.date = date;
+        return true;
+    }
+
+    public Integer getMileage() {
+        return this.mileage;
+    }
+    public Boolean setMileage(Integer miles) {
+        this.mileage = miles;
+        return true;
     }
 }

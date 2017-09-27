@@ -25,8 +25,20 @@
     <Label text="Replace CVT Fluid" GridPane.rowIndex="5" GridPane.columnIndex="0" id="item" onMouseClicked="#handleClick" />
 
     <!-- Tires -->
-    <Label text="Tire Rotation" GridPane.rowIndex="6" GridPane.columnIndex="0" id="item" onMouseClicked="#handleClick" />
-    <Label text="New Tires" GridPane.rowIndex="7" GridPane.columnIndex="0" id="item" onMouseClicked="#handleClick" />
+    <GridPane fx:id="tireRotation" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="5" hgap="10" >
+        <Label fx:id="title" text="Tire Rotation" id="item" GridPane.columnIndex="0" onMouseClicked="#handleClick" />
+        <Label fx:id="dateOf" text="a" id="data" GridPane.columnIndex="1" />
+        <Label fx:id="mileageOf" text="b" id="data" GridPane.columnIndex="2" />
+        <Label fx:id="limitMiles" text="c" id="data" GridPane.columnIndex="3" />
+        <Label fx:id="limitMonths"  text="d" id="data" GridPane.columnIndex="4" />
+    </GridPane>
+    <GridPane fx:id="newTires" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="5"  hgap="10" >
+        <Label text="New Tires" id="item" GridPane.columnIndex="0" onMouseClicked="#handleClick" />
+        <Label text="a" id="data" GridPane.columnIndex="1" />
+        <Label text="b" id="data" GridPane.columnIndex="2" />
+        <Label text="c" id="data" GridPane.columnIndex="3" />
+        <Label text="d" id="data" GridPane.columnIndex="4" />
+    </GridPane>
     <Label text="Brake Fluid Change" GridPane.rowIndex="8" GridPane.columnIndex="0" id="item" onMouseClicked="#handleClick" />
     <Label text="New Brakes" GridPane.rowIndex="9" GridPane.columnIndex="0" id="item" onMouseClicked="#handleClick" />
 

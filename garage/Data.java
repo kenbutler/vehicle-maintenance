@@ -8,16 +8,18 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
- * Created by kenbutler on 6/20/17.
+ * Created by kenbutler on 9/26/17.
  */
-public class Overview extends ArrayList<Object> {
+public class Data extends ArrayList<Object>{
 
     private boolean DEBUG = true;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
-    public Overview() throws IOException {
-        ReadData("overview.txt");
-        LoadData();
+    // Variables here
+
+    public Data() throws IOException {
+        // Init here
+        ReadData("log.csv");
     }
 
     public void ReadData (String csvFile) throws IOException {
@@ -33,20 +35,18 @@ public class Overview extends ArrayList<Object> {
 
                 // Split the line by way of commas
                 String[] lineArray = line.split(cvsSplitBy);
-                this.add(new Category(lineArray));
+                this.add(new Item(lineArray));
 
             } // End while loop of CSV read
 
             if (DEBUG) {
-                System.out.format("***** DEBUG - Overview data read from %s *****\n", csvFile);
+                System.out.format("***** DEBUG - Data read from %s *****\n", csvFile);
                 System.out.format("data size is %d\n", this.size());
                 for (int i = 0; i < this.size(); i++) {
-                    Category temp = (Category) this.get(i);
-                    System.out.format("(%s) %s --> Limits - Miles: %d, Months: %d\n",
-                            temp.getCategory(),
+                    Item temp = (Item) this.get(i);
+                    System.out.format("%s, %s, %d\n",
                             temp.getTitle(),
-                            temp.getLimitMiles(),
-                            temp.getLimitMonths());
+                            temp.getDateString(), temp.getMileage());
                 }
                 System.out.print("***** END DEBUG *****\n\n");
             }
@@ -68,13 +68,4 @@ public class Overview extends ArrayList<Object> {
         } // End try to populate / exception handler
 
     } // End ReadData()
-
-    public void LoadData() {
-
-        // Loop through data and load to
-        for (int i=0; i < this.size(); i++) {
-            //Controller.setData(data[i]);
-        }
-    }
-
 }
