@@ -15,12 +15,12 @@ public class Overview extends ArrayList<Object> {
     private boolean DEBUG = true;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
-    public Overview() throws IOException {
-        ReadData("overview.csv");
-        LoadData();
+    public Overview(String file) throws IOException {
+        readData(file);
+        loadData();
     }
 
-    public void ReadData (String csvFile) throws IOException {
+    public void readData (String csvFile) throws IOException {
 
         BufferedReader br = null;
         String line = "";
@@ -69,7 +69,7 @@ public class Overview extends ArrayList<Object> {
 
     } // End ReadData()
 
-    public void LoadData() {
+    public void loadData() {
 
         // Loop through data and load to
         for (int i=0; i < this.size(); i++) {

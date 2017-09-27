@@ -10,19 +10,19 @@ import java.util.ArrayList;
 /**
  * Created by kenbutler on 9/26/17.
  */
-public class Data extends ArrayList<Object>{
+public class Log extends ArrayList<Object>{
 
     private boolean DEBUG = true;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
     // Variables here
 
-    public Data() throws IOException {
+    public Log(String file) throws IOException {
         // Init here
-        ReadData("log.csv");
+        readData(file);
     }
 
-    public void ReadData (String csvFile) throws IOException {
+    public void readData (String csvFile) throws IOException {
 
         BufferedReader br = null;
         String line = "";

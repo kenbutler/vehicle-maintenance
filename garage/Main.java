@@ -16,8 +16,8 @@ import java.text.ParseException;
 
 public class Main extends Application {
 
-    public Overview overview = new Overview();
-    public Data data = new Data();
+    public Overview overview = new Overview("overview.csv");
+    public Log data = new Log("log.csv");
 
     @Override
     public void start(Stage primaryStage) throws Exception{

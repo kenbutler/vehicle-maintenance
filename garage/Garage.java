@@ -56,7 +56,7 @@ public class Garage {
         frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
         // Overview
-        Overview menu = new Overview();
+        //Overview menu = new Overview();
         CurrentState myState = new CurrentState();
 
         //tabbedPane.addTab("Overview",  null, menu, null);
