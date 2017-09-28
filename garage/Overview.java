@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by kenbutler on 6/20/17.
@@ -68,6 +69,30 @@ public class Overview extends ArrayList<Object> {
         } // End try to populate / exception handler
 
     } // End ReadData()
+
+    public void analyzeLog(Log log) {
+        for (int i=0; i < log.size(); i++) {
+            Item item = (Item) log.get(i);
+            for (int j=0; j < this.size(); j++) {
+                Category cat = (Category) this.get(j);
+                if (Objects.equals(cat.getTitle(), item.getTitle())) {
+                    // Compare dates
+                    if (item.getDate().after(cat.getDate())) {
+                        // Update
+                        ((Category) this.get(j)).setDate(item.getDate());
+                        System.out.println("found match!");
+                    }
+                }
+            }
+        }
+
+        if (DEBUG) {
+            for (int i=0; i < this.size(); i++) {
+                Category cat = (Category) this.get(i);
+                System.out.format("%s last changed %s\n", cat.getTitle(), cat.getDateString());
+            }
+        }
+    }
 
     public void loadData() {
 

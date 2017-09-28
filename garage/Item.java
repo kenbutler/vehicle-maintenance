@@ -15,7 +15,7 @@ public class Item {
     private Integer mileage;
 
     public Item(String[] lineArray) throws ParseException {
-        date = new SimpleDateFormat("dd/MM/yyyy").parse(lineArray[0]);
+        date = new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]);
         mileage = Integer.parseInt(lineArray[1]);
         title = lineArray[2];
         // Price TODO
@@ -34,7 +34,7 @@ public class Item {
         return this.date;
     }
     public String getDateString() {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         return df.format(this.date);
     }
     public Boolean setDate(Date date) {

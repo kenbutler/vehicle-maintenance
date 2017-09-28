@@ -17,7 +17,7 @@ import java.text.ParseException;
 public class Main extends Application {
 
     public Overview overview = new Overview("overview.csv");
-    public Log data = new Log("log.csv");
+    public Log log = new Log("log.csv");
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -34,18 +34,8 @@ public class Main extends Application {
     }
 
     private void initialize() throws IOException, ParseException {
-        initializeOverview();
-        initializeLogs(); // TODO
-    }
-
-    private void initializeOverview() throws IOException, ParseException {
-        // Add overview grid
-        //overview = new Overview();
-    }
-
-    private void initializeLogs() throws IOException {
-        // Add log table of maintenance history for vehicle
-        // TODO
+        overview.analyzeLog(log);
+        System.out.println("End of main initialize");
     }
 
     /*
