@@ -1,0 +1,21 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.*?>
+
+<?import java.net.URL?>
+
+<GridPane fx:id="myGrid" fx:controller="garage.LogController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <!-- Headers -->
+    <Label text="Last Change" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="2" id="top"/>
+    <!-- --><Label text="Date" GridPane.rowIndex="1" GridPane.columnIndex="1" id="header"/>
+    <!-- --><Label text="Miles" GridPane.rowIndex="1" GridPane.columnIndex="2" id="header"/>
+    <Label text="Limits" GridPane.rowIndex="0" GridPane.columnIndex="3" GridPane.columnSpan="2" id="top"/>
+    <!-- --><Label text="Miles" GridPane.rowIndex="1" GridPane.columnIndex="3" id="header"/>
+    <!-- --><Label text="Months" GridPane.rowIndex="1" GridPane.columnIndex="4" id="header"/>
+
+    <!-- CSS -->
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+
+</GridPane>
