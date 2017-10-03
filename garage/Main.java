@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -65,15 +66,34 @@ public class Main extends Application {
 
     private void addLogElements () {
         logTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        logTable.setPrefHeight(175);
-        logTable.setPrefHeight(200);
-        logTable.getColumns().add(0, new TableColumn<Item, String>(""));
-        logTable.getColumns().add(1, new TableColumn<Item, String>("Date"));
-        logTable.getColumns().add(2, new TableColumn<Item, String>("Mileage"));
-        logTable.getColumns().add(3, new TableColumn<Item, String>("Item"));
-        logTable.getColumns().add(4, new TableColumn<Item, String>("Company"));
-        logTable.getColumns().add(5, new TableColumn<Item, String>("Price"));
-        logTable.getColumns().add(6, new TableColumn<Item, String>("Notes"));
+        logTable.setMinHeight(500);
+        logTable.setMinWidth(800);
+        // Date
+        TableColumn colDate = new TableColumn<Item, String>("Date");
+        colDate.setCellValueFactory(new PropertyValueFactory<Item, String>("date"));
+        colDate.setMinWidth(100);
+        logTable.getColumns().add(0, colDate);
+        // Mileage
+        TableColumn colMileage = new TableColumn<Item, String>("Mileage");
+        colMileage.setCellValueFactory(new PropertyValueFactory<Item, String>("mileage"));
+        logTable.getColumns().add(1, colMileage);
+        // Item
+        TableColumn colItem = new TableColumn<Item, String>("Item");
+        colItem.setCellValueFactory(new PropertyValueFactory<Item, String>("title"));
+        colItem.setMinWidth(100.0);
+        logTable.getColumns().add(2, colItem);
+        // Company
+        TableColumn colCompany = new TableColumn<Item, String>("Company");
+        colCompany.setCellValueFactory(new PropertyValueFactory<Item, String>("company"));
+        logTable.getColumns().add(3, colCompany);
+        // Price
+        TableColumn colPrice = new TableColumn<Item, String>("Price");
+        colPrice.setCellValueFactory(new PropertyValueFactory<Item, String>("price"));
+        logTable.getColumns().add(4, colPrice);
+        // Notes
+        TableColumn colNotes = new TableColumn<Item, String>("Notes");
+        colNotes.setCellValueFactory(new PropertyValueFactory<Item, String>("notes"));
+        logTable.getColumns().add(5, colNotes);
         ObservableList<Item> fxlist = log.getData();
         logTable.getItems().addAll(fxlist);
         logAnchorPane.setPadding(new Insets(40, 40, 40, 40));

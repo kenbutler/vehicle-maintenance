@@ -57,7 +57,7 @@ public class Log extends ArrayList<Object>{
                     Item temp = (Item) this.get(i);
                     System.out.format("%s, %s, %d\n",
                             temp.getTitle(),
-                            temp.getDateString(), temp.getMileage());
+                            temp.getDate(), temp.getMileage());
                 }
                 System.out.print("***** END DEBUG *****\n\n");
             }

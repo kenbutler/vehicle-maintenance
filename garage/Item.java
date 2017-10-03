@@ -14,16 +14,19 @@ public class Item {
     private Date date;
     private Integer mileage;
     private String title;
-    private String company = "blah";
-    private Integer price = 0;
-    private String notes = "NONE";
+    private String company = "???";
+    private Double price = 0.0;
+    private String notes = "";
 
     public Item(String[] lineArray) throws ParseException {
         date = new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]);
         mileage = Integer.parseInt(lineArray[1]);
         title = lineArray[2];
-        // Price TODO
-        // Notes TODO
+        company = lineArray[3];
+        price = Double.parseDouble(lineArray[4].replaceAll("[^\\d.]+", "")); // TODO: Make money value
+        if (lineArray.length >= 6) {
+            notes = lineArray[5];
+        }
     }
 
     public String getTitle() {
@@ -34,10 +37,10 @@ public class Item {
         return true;
     }
 
-    public Date getDate() {
+    public Date getDateFull() {
         return this.date;
     }
-    public String getDateString() {
+    public String getDate() {
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         return df.format(this.date);
     }
@@ -51,6 +54,27 @@ public class Item {
     }
     public Boolean setMileage(Integer miles) {
         this.mileage = miles;
+        return true;
+    }
+
+    public String getCompany() { return this.company; }
+    public Boolean setCompany(String company) {
+        this.company = company;
+        return true;
+    }
+
+    public String getPrice() {
+        String strPrice = "$" + this.price.toString();
+        return strPrice;
+    }
+    public Boolean setPrice(Double price) {
+        this.price = price;
+        return true;
+    }
+
+    public String getNotes() { return this.notes; }
+    public Boolean setNotes(String notes) {
+        this.notes = notes;
         return true;
     }
 }

@@ -77,9 +77,9 @@ public class Overview extends ArrayList<Object> {
                 Category cat = (Category) this.get(j);
                 if (Objects.equals(cat.getTitle(), item.getTitle())) {
                     // Compare dates
-                    if (item.getDate().after(cat.getDate())) {
+                    if (item.getDateFull().after(cat.getDate())) {
                         // Update
-                        ((Category) this.get(j)).setDate(item.getDate());
+                        ((Category) this.get(j)).setDate(item.getDateFull());
                         System.out.println("found match!");
                     }
                 }
