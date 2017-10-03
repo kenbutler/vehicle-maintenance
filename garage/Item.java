@@ -40,11 +40,11 @@ public class Item {
         return true;
     }
 
-    public Date getDateFull() {
+    public Date getDateNumeric() {
         return this.date;
     }
     public String getDate() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         return df.format(this.date);
     }
     public Boolean setDate(Date date) {
@@ -52,10 +52,10 @@ public class Item {
         return true;
     }
 
-    public Integer getMileageNumeric() {
+    public Integer getMileage() {
         return this.mileage;
     }
-    public String getMileage() {
+    public String getMileageString() {
         return NumberFormat.getNumberInstance(Locale.US).format(this.mileage);
     }
     public Boolean setMileage(Integer miles) {
@@ -69,10 +69,11 @@ public class Item {
         return true;
     }
 
-    public String getPrice() {
-        NumberFormat nf = NumberFormat.getCurrencyInstance();
-        nf.setCurrency(Currency.getInstance("USD"));
-        return nf.format(new BigDecimal(this.price));
+    public BigDecimal getPrice() {
+        //NumberFormat nf = NumberFormat.getCurrencyInstance();
+        //nf.setCurrency(Currency.getInstance("USD"));
+        BigDecimal bd = new BigDecimal(this.price).setScale(2, BigDecimal.ROUND_DOWN);
+        return bd;
     }
     public Boolean setPrice(Double price) {
         this.price = price;

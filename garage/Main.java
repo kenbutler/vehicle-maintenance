@@ -97,7 +97,7 @@ public class Main extends Application {
         colCompany.setMinWidth(100);
         logTable.getColumns().add(3, colCompany);
         // Price
-        TableColumn colPrice = new TableColumn<Item, String>("Price");
+        TableColumn colPrice = new TableColumn<Item, String>("Price ($)");
         colPrice.setCellValueFactory(new PropertyValueFactory<Item, String>("price"));
         colPrice.setStyle("-fx-alignment: CENTER;");
         logTable.getColumns().add(4, colPrice);

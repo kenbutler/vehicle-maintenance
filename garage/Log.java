@@ -88,7 +88,6 @@ public class Log extends ArrayList<Object>{
             list.add(temp);
         }
         ObservableList<Item> fxlist = FXCollections.observableList(list);
-        //logTable.getItems().addAll(fxlist);
         return fxlist;
     }
 }
