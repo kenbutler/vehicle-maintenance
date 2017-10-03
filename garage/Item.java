@@ -1,16 +1,19 @@
 package garage;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Currency;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by kenbutler on 9/26/17.
  */
 public class Item {
 
-    private Integer index = 0;
     private Date date;
     private Integer mileage;
     private String title;
@@ -49,8 +52,11 @@ public class Item {
         return true;
     }
 
-    public Integer getMileage() {
+    public Integer getMileageNumeric() {
         return this.mileage;
+    }
+    public String getMileage() {
+        return NumberFormat.getNumberInstance(Locale.US).format(this.mileage);
     }
     public Boolean setMileage(Integer miles) {
         this.mileage = miles;
@@ -64,8 +70,9 @@ public class Item {
     }
 
     public String getPrice() {
-        String strPrice = "$" + this.price.toString();
-        return strPrice;
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        nf.setCurrency(Currency.getInstance("USD"));
+        return nf.format(new BigDecimal(this.price));
     }
     public Boolean setPrice(Double price) {
         this.price = price;

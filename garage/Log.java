@@ -55,7 +55,7 @@ public class Log extends ArrayList<Object>{
                 System.out.format("data size is %d\n", this.size());
                 for (int i = 0; i < this.size(); i++) {
                     Item temp = (Item) this.get(i);
-                    System.out.format("%s, %s, %d\n",
+                    System.out.format("%s, %s, %s\n",
                             temp.getTitle(),
                             temp.getDate(), temp.getMileage());
                 }
