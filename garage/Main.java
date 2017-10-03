@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -68,36 +69,46 @@ public class Main extends Application {
         logTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         logTable.setMinHeight(500);
         logTable.setMinWidth(800);
+        logTable.setStyle("-fx-alignment: CENTER;");
         // Date
         TableColumn colDate = new TableColumn<Item, String>("Date");
         colDate.setCellValueFactory(new PropertyValueFactory<Item, String>("date"));
-        colDate.setMinWidth(100);
+        colDate.setMinWidth(50);
+        colDate.setStyle("-fx-alignment: CENTER;");
         logTable.getColumns().add(0, colDate);
         // Mileage
         TableColumn colMileage = new TableColumn<Item, String>("Mileage");
         colMileage.setCellValueFactory(new PropertyValueFactory<Item, String>("mileage"));
+        colMileage.setMinWidth(30);
+        colMileage.setStyle("-fx-alignment: CENTER;");
         logTable.getColumns().add(1, colMileage);
         // Item
         TableColumn colItem = new TableColumn<Item, String>("Item");
         colItem.setCellValueFactory(new PropertyValueFactory<Item, String>("title"));
-        colItem.setMinWidth(100.0);
+        colItem.setMinWidth(150.0);
         logTable.getColumns().add(2, colItem);
         // Company
         TableColumn colCompany = new TableColumn<Item, String>("Company");
         colCompany.setCellValueFactory(new PropertyValueFactory<Item, String>("company"));
+        colCompany.setMinWidth(100);
         logTable.getColumns().add(3, colCompany);
         // Price
         TableColumn colPrice = new TableColumn<Item, String>("Price");
         colPrice.setCellValueFactory(new PropertyValueFactory<Item, String>("price"));
+        colPrice.setStyle("-fx-alignment: CENTER;");
         logTable.getColumns().add(4, colPrice);
         // Notes
         TableColumn colNotes = new TableColumn<Item, String>("Notes");
         colNotes.setCellValueFactory(new PropertyValueFactory<Item, String>("notes"));
+        colNotes.setMinWidth(100);
         logTable.getColumns().add(5, colNotes);
         ObservableList<Item> fxlist = log.getData();
         logTable.getItems().addAll(fxlist);
         logAnchorPane.setPadding(new Insets(40, 40, 40, 40));
+        logAnchorPane.setStyle("-fx-alignment: CENTER;");
         logAnchorPane.getChildren().add(logTable);
+        AnchorPane.setLeftAnchor(logTable, 0.0);
+        AnchorPane.setRightAnchor(logTable, 0.0);
         logTab.setContent(logAnchorPane);
     }
 
