@@ -5,11 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Control;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -19,10 +18,15 @@ import java.text.ParseException;
 public class Main extends Application {
 
     public Overview overview = new Overview("overview.csv");
-    public Log log = new Log("log.csv");
+    public Log log = new Log();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        AnchorPane p = fxmlLoader.load(getClass().getResource("log.fxml").openStream());
+        LogController logCtrl = (LogController) fxmlLoader.getController();
+        logCtrl.loadData(log);
 
         initialize();
 

@@ -1,24 +1,27 @@
 package garage;
 
+import javafx.fxml.FXML;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import javafx.scene.control.TableView;
 
 /**
  * Created by kenbutler on 9/26/17.
  */
 public class Log extends ArrayList<Object>{
 
+    // Variables here
     private boolean DEBUG = true;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
-    // Variables here
-
-    public Log(String file) throws IOException {
+    public Log() throws IOException {
         // Init here
+        String file = "log.csv";
         readData(file);
     }
 

@@ -10,9 +10,13 @@ import java.util.Date;
  */
 public class Item {
 
-    private String title;
+    private Integer index;
     private Date date;
     private Integer mileage;
+    private String title;
+    private String company = "blah";
+    private Integer price = 0;
+    private String notes = "NONE";
 
     public Item(String[] lineArray) throws ParseException {
         date = new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]);
