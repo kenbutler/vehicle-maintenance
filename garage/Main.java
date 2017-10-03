@@ -67,9 +67,13 @@ public class Main extends Application {
 
     private void addLogElements () {
         logTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        logTable.setMinHeight(500);
+        logTable.setMinHeight(450);
         logTable.setMinWidth(800);
+        logTable.setPadding(new Insets(0, 0, 5, 0));
         logTable.setStyle("-fx-alignment: CENTER;");
+        /*
+            Format and add columns to table
+         */
         // Date
         TableColumn colDate = new TableColumn<Item, String>("Date");
         colDate.setCellValueFactory(new PropertyValueFactory<Item, String>("date"));
@@ -104,6 +108,9 @@ public class Main extends Application {
         logTable.getColumns().add(5, colNotes);
         ObservableList<Item> fxlist = log.getData();
         logTable.getItems().addAll(fxlist);
+        /*
+            Format logAnchorPane and add logTable
+         */
         logAnchorPane.setPadding(new Insets(40, 40, 40, 40));
         logAnchorPane.setStyle("-fx-alignment: CENTER;");
         logAnchorPane.getChildren().add(logTable);
