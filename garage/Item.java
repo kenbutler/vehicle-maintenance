@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class Item {
 
-    private Integer index;
+    private Integer index = 0;
     private Date date;
     private Integer mileage;
     private String title;

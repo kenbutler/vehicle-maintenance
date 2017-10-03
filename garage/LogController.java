@@ -9,23 +9,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class LogController {
 
     @FXML
     public TableView<Item> logTable;
-
-
-    public LogController() throws IOException {
-        System.out.println("**** Initializing Log Controller ****");
-
-        // REQUIRED to avoid NullPointerException error
-        //FXMLLoader loader = new FXMLLoader( getClass().getResource("log.fxml") );
-        //loader.setController(this);
-        //Parent root = (Parent) loader.load();
-    }
 
     public void handleClick(MouseEvent event) {
         System.out.println("Log controller encountered click.");

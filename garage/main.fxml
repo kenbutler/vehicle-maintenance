@@ -9,14 +9,12 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
 
-<TabPane fx:id="myTabPane" fx:controller="garage.Controller" onMouseClicked="#handleClick" tabClosingPolicy="UNAVAILABLE"
+<TabPane fx:id="myTabPane" fx:controller="garage.Main" onMouseClicked="#handleClick" tabClosingPolicy="UNAVAILABLE"
          xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://www.w3.org/2001/XInclude">
     <tabs>
         <Tab fx:id="overviewTabPage" text="Overview">
-            <fx:include source="overview.fxml"/>
         </Tab>
         <Tab fx:id="logTabPage" text="Log">
-            <fx:include source="log.fxml"/>
         </Tab>
     </tabs>
 

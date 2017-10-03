@@ -1,5 +1,8 @@
 package garage;
 
+import com.sun.tools.javac.util.Name;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
 import java.io.BufferedReader;
@@ -8,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.control.TableView;
 
 /**
@@ -23,6 +28,9 @@ public class Log extends ArrayList<Object>{
         // Init here
         String file = "log.csv";
         readData(file);
+    }
+
+    public void handleClick() {
     }
 
     public void readData (String csvFile) throws IOException {
@@ -71,4 +79,16 @@ public class Log extends ArrayList<Object>{
         } // End try to populate / exception handler
 
     } // End ReadData()
+
+    public ObservableList<Item> getData() {
+        TableView<Item> logTable;
+        List<Item> list = new ArrayList<>();
+        for (int i = 0; i < this.size(); i++) {
+            Item temp = (Item) this.get(i);
+            list.add(temp);
+        }
+        ObservableList<Item> fxlist = FXCollections.observableList(list);
+        //logTable.getItems().addAll(fxlist);
+        return fxlist;
+    }
 }
