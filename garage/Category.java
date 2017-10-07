@@ -68,4 +68,10 @@ public class Category {
         this.date = date;
         return true;
     }
+
+    public Integer getMileage() { return this.mileage; }
+    public Boolean setMileage(Integer mileage) {
+        this.mileage = mileage;
+        return true;
+    }
 }

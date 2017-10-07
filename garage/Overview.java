@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Overview extends ArrayList<Object> {
 
-    private boolean DEBUG = true;
+    private boolean DEBUG = false;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
     public Overview(String file) throws IOException {
@@ -78,9 +78,13 @@ public class Overview extends ArrayList<Object> {
                 if (Objects.equals(cat.getTitle(), item.getTitle())) {
                     // Compare dates
                     if (item.getDateNumeric().after(cat.getDate())) {
-                        // Update
+                        // Update date
                         ((Category) this.get(j)).setDate(item.getDateNumeric());
-                        System.out.println("found match!");
+                        if (DEBUG) {
+                            System.out.println("found match!");
+                        }
+                        // Update mileage
+                        ((Category) this.get(j)).setMileage(item.getMileage());
                     }
                 }
             }

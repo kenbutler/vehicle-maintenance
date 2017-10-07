@@ -30,6 +30,8 @@ public class Main extends Application {
 
     private TabPane tabPane = new TabPane();
     private Tab overviewTab = new Tab("Overview");
+    private AnchorPane overviewPane = new AnchorPane();
+    private GridPane overviewGrid = new GridPane();
     private Tab logTab = new Tab("Log");
     private AnchorPane logAnchorPane = new AnchorPane();
     private TableView<Item> logTable = new TableView<>();
@@ -44,7 +46,9 @@ public class Main extends Application {
         StackPane root = new StackPane();
         addElements(root);
         primaryStage.setTitle("Vehicle Garage");
-        primaryStage.setScene(new Scene(root, 1200, 500));
+        Scene scene = new Scene(root, 1200, 500);
+        scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
@@ -58,11 +62,46 @@ public class Main extends Application {
     }
 
     private void addElements(StackPane root) {
+        addOverviewElements();
         addLogElements();
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         tabPane.getTabs().add(overviewTab);
         tabPane.getTabs().add(logTab);
         root.getChildren().add(tabPane);
+    }
+
+    private void addOverviewElements() {
+        System.out.printf("Grid Pane stuff");
+        overviewGrid.setMinHeight(450);
+        overviewGrid.setMinWidth(800);
+        overviewGrid.setPadding(new Insets(0, 0, 5, 0));
+        overviewGrid.setGridLinesVisible(true);
+        overviewGrid.setStyle("-fx-alignment: TOP-CENTER;");
+        // Add column headers
+        overviewGrid.add(new Label("Status"), 1, 0);
+        overviewGrid.add(new Label("Date"), 1, 1);
+        overviewGrid.add(new Label("Mileage"), 2, 1);
+        overviewGrid.add(new Label("Limits"), 3, 0);
+        overviewGrid.add(new Label("Miles"), 3, 1);
+        overviewGrid.add(new Label("Months"), 4, 1);
+        for (int i=0; i < overview.size(); i++) {
+            Category tempObj = (Category) overview.get(i);
+            Label title = new Label(tempObj.getTitle());
+            title.setId("category");
+            Label date = new Label(tempObj.getDateString());
+            Label mileage = new Label(tempObj.getMileage().toString());
+            Label limitMiles = new Label(tempObj.getLimitMiles().toString());
+            Label limitMonths = new Label(tempObj.getLimitMonths().toString());
+            overviewGrid.add(title, 0, 2 + i);
+            overviewGrid.add(date, 1, 2 + i);
+            overviewGrid.add(mileage, 2, 2 + i);
+            overviewGrid.add(limitMiles, 3, 2 + i);
+            overviewGrid.add(limitMonths, 4, 2 + i);
+        }
+        overviewPane.getChildren().addAll(overviewGrid);
+        AnchorPane.setLeftAnchor(overviewGrid, 0.0);
+        AnchorPane.setRightAnchor(overviewGrid, 0.0);
+        overviewTab.setContent(overviewPane);
     }
 
     private void addLogElements () {
