@@ -16,6 +16,7 @@ public class Category {
     private int limitMonths;
     private Date date;
     private int mileage;
+    private boolean needService;
 
     public Category(String[] lineArray) throws ParseException {
         category = lineArray[0];
@@ -72,6 +73,12 @@ public class Category {
     public Integer getMileage() { return this.mileage; }
     public Boolean setMileage(Integer mileage) {
         this.mileage = mileage;
+        return true;
+    }
+
+    public Boolean getNeedService() { return this.needService; }
+    public Boolean setNeedService(Boolean needService) {
+        this.needService = needService;
         return true;
     }
 }
