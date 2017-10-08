@@ -1,5 +1,8 @@
 package garage;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,54 +13,62 @@ import java.util.Date;
  */
 public class Category {
 
-    private String category;
-    private String title;
-    private int limitMiles;
-    private int limitMonths;
-    private Date date;
-    private int mileage;
-    private boolean needService;
+    private String category = null;
+    private String title = null;
+    private Date date = null;
+    private int mileage = 0;
+    private int limitMiles = 0;
+    private int limitMonths = 0;
+    private boolean needService = false;
+
+    private GridPane categoryGrid = new GridPane();
+    private Label titleLbl = new Label();
+    private Label dateLbl = new Label();
+    private Label mileageLbl = new Label();
+    private Label limitMilesLbl = new Label();
+    private Label limitMonthsLbl = new Label();
 
     public Category(String[] lineArray) throws ParseException {
-        category = lineArray[0];
-        title = lineArray[1];
-        limitMiles = Integer.parseInt(lineArray[2]);
-        limitMonths = Integer.parseInt(lineArray[3]);
+        setCategory(lineArray[0]);
+        setTitle(lineArray[1]);
+        setLimitMiles(Integer.parseInt(lineArray[2]));
+        setLimitMonths(Integer.parseInt(lineArray[3]));
         // Defaults
-        date = new SimpleDateFormat("MM/dd/yyyy").parse("01/01/1900");
-        mileage = 0;
+        setDate(new SimpleDateFormat("MM/dd/yyyy").parse("01/01/1900"));
+        setMileage(0);
+        setNeedService(false);
+        setCategoryGrid();
     }
 
     public String getCategory() {
         return this.category;
     }
-    public Boolean setCategory(String str) {
+    public void setCategory(String str) {
         this.category = str;
-        return true;
     }
 
     public String getTitle() {
         return this.title;
     }
-    public Boolean setTitle(String str) {
+    public void setTitle(String str) {
         this.title = str;
-        return true;
+        this.titleLbl.setStyle("-fx-text-fill: red;");
     }
 
     public Integer getLimitMiles() {
         return this.limitMiles;
     }
-    public Boolean setLimitMiles(Integer miles) {
+    public void setLimitMiles(Integer miles) {
         this.limitMiles = miles;
-        return true;
+        this.limitMilesLbl.setStyle("-fx-text-fill: red;");
     }
 
     public Integer getLimitMonths() {
         return this.limitMonths;
     }
-    public Boolean setLimitMonths(Integer months) {
+    public void setLimitMonths(Integer months) {
         this.limitMonths = months;
-        return true;
+        this.limitMonthsLbl.setStyle("-fx-text-fill: red;");
     }
 
     public Date getDate() { return this.date; }
@@ -65,20 +76,30 @@ public class Category {
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         return df.format(this.date);
     }
-    public Boolean setDate(Date date) {
+    public void setDate(Date date) {
         this.date = date;
-        return true;
+        this.dateLbl.setStyle("-fx-text-fill: red;");
     }
 
     public Integer getMileage() { return this.mileage; }
-    public Boolean setMileage(Integer mileage) {
+    public void setMileage(Integer mileage) {
         this.mileage = mileage;
-        return true;
+        this.mileageLbl.setStyle("-fx-text-fill: red;");
     }
 
     public Boolean getNeedService() { return this.needService; }
-    public Boolean setNeedService(Boolean needService) {
+    public void setNeedService(Boolean needService) {
         this.needService = needService;
-        return true;
+    }
+
+    public GridPane getCategoryGrid() {
+        return this.categoryGrid;
+    }
+    private void setCategoryGrid() {
+        categoryGrid.add(titleLbl, 0, 0);
+        categoryGrid.add(dateLbl, 1, 0);
+        categoryGrid.add(mileageLbl, 2, 0);
+        categoryGrid.add(limitMilesLbl, 3, 0);
+        categoryGrid.add(limitMonthsLbl, 4, 0);
     }
 }
