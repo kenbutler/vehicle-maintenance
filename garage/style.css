@@ -9,17 +9,18 @@
 #header {
     -fx-font-size: 20;
     -fx-font-weight: bold;
-    -fx-min-width: 150px;
+    -fx-min-width: 300px;
     -fx-alignment: center;
     -fx-border-style: solid;
     -fx-border-width: 1px;
 }
 
 #category {
+    -fx-alignment: CENTER;
+    -fx-border-style: solid;
     -fx-font-size: 20;
     -fx-font-weight: bold;
     -fx-min-width: 150px;
-    -fx-alignment: CENTER;
 }
 
 #title {

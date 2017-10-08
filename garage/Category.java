@@ -67,7 +67,7 @@ public class Category {
     }
     public void setLimitMiles(Integer miles) {
         this.limitMiles = miles;
-        this.limitMonthsLbl.setText(miles.toString());
+        this.limitMilesLbl.setText(miles.toString());
     }
 
     public Integer getLimitMonths() {
@@ -97,6 +97,11 @@ public class Category {
     public Boolean getNeedService() { return this.needService; }
     public void setNeedService(Boolean needService) {
         this.needService = needService;
+        if (this.needService) {
+            this.titleLbl.setStyle("-fx-text-fill: red;");
+        } else {
+            this.titleLbl.setId("title");
+        }
     }
 
     public GridPane getCategoryGrid() {

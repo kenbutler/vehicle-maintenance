@@ -75,15 +75,16 @@ public class Main extends Application {
         overviewGrid.setMinHeight(450);
         overviewGrid.setMinWidth(800);
         overviewGrid.setPadding(new Insets(0, 0, 5, 0));
-        overviewGrid.setGridLinesVisible(true);
+        overviewGrid.setGridLinesVisible(false);
         overviewGrid.setStyle("-fx-alignment: TOP-CENTER;");
         // Add column headers
 
         Label hdrTitle = new Label("Title");
         hdrTitle.setId("category");
+        hdrTitle.setStyle("-fx-min-width: 300px;"); // Important width alteration for formatting
         overviewGrid.add(hdrTitle, 0, 1);
         Label hdrStatus = new Label("Status");
-        hdrStatus.setId("category");
+        hdrStatus.setId("header");
         overviewGrid.add(hdrStatus, 1, 0, 2, 1);
         Label hdrDate = new Label("Date");
         hdrDate.setId("category");
@@ -92,7 +93,7 @@ public class Main extends Application {
         hdrMileage.setId("category");
         overviewGrid.add(hdrMileage, 2, 1);
         Label hdrLimits = new Label("Limits");
-        hdrLimits.setId("category");
+        hdrLimits.setId("header");
         overviewGrid.add(hdrLimits, 3, 0, 2, 1);
         Label hdrLimitsMiles = new Label("Miles");
         hdrLimitsMiles.setId("category");
@@ -101,13 +102,11 @@ public class Main extends Application {
         hdrLimitsMonths.setId("category");
         overviewGrid.add(hdrLimitsMonths, 4, 1);
 
-        /*
         for (int i=0; i < overview.size(); i++) {
             Category tempObj = (Category) overview.get(i);
             GridPane tempGrid = tempObj.getCategoryGrid();
             overviewGrid.add(tempGrid, 0, 2 + i, 5, 1);
         }
-        */
         overviewPane.getChildren().addAll(overviewGrid);
         AnchorPane.setLeftAnchor(overviewGrid, 0.0);
         AnchorPane.setRightAnchor(overviewGrid, 0.0);
