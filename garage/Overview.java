@@ -71,6 +71,8 @@ public class Overview extends ArrayList<Object> {
     } // End ReadData()
 
     public void analyzeLog(Log log) {
+
+        // Loop through log to get latest update of given category
         for (int i=0; i < log.size(); i++) {
             Item item = (Item) log.get(i);
             for (int j=0; j < this.size(); j++) {
@@ -80,14 +82,16 @@ public class Overview extends ArrayList<Object> {
                     if (item.getDateNumeric().after(cat.getDate())) {
                         // Update date
                         ((Category) this.get(j)).setDate(item.getDateNumeric());
-                        if (DEBUG) {
-                            System.out.println("found match!");
-                        }
                         // Update mileage
                         ((Category) this.get(j)).setMileage(item.getMileage());
                     }
                 }
             }
+        } // End loop of latest change
+
+        for (int i=0; i < this.size(); i++) {
+            // Check for service needs
+            ((Category) this.get(i)).setServiceNeeds(46000); // TODO fill with actual current mileage and date
         }
 
         if (DEBUG) {

@@ -1,27 +1,18 @@
 package garage;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import sun.plugin.javascript.navig.Anchor;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main extends Application {
 
@@ -39,12 +30,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        initialize();
+        //initialize();
 
         //Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
 
         StackPane root = new StackPane();
         addElements(root);
+        //
+        initialize();
+        //
         primaryStage.setTitle("Vehicle Garage");
         Scene scene = new Scene(root, 1200, 500);
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
@@ -54,7 +48,6 @@ public class Main extends Application {
 
     private void initialize() throws IOException, ParseException {
         overview.analyzeLog(log);
-        System.out.println("End of main initialize");
     }
 
     public void handleClick() {
@@ -71,7 +64,6 @@ public class Main extends Application {
     }
 
     private void addOverviewElements() {
-        System.out.printf("Grid Pane stuff");
         overviewGrid.setMinHeight(450);
         overviewGrid.setMinWidth(800);
         overviewGrid.setPadding(new Insets(0, 0, 5, 0));
@@ -95,12 +87,12 @@ public class Main extends Application {
         Label hdrLimits = new Label("Limits");
         hdrLimits.setId("header");
         overviewGrid.add(hdrLimits, 3, 0, 2, 1);
-        Label hdrLimitsMiles = new Label("Miles");
-        hdrLimitsMiles.setId("category");
-        overviewGrid.add(hdrLimitsMiles, 3, 1);
         Label hdrLimitsMonths = new Label("Months");
         hdrLimitsMonths.setId("category");
-        overviewGrid.add(hdrLimitsMonths, 4, 1);
+        overviewGrid.add(hdrLimitsMonths, 3, 1);
+        Label hdrLimitsMiles = new Label("Miles");
+        hdrLimitsMiles.setId("category");
+        overviewGrid.add(hdrLimitsMiles, 4, 1);
 
         for (int i=0; i < overview.size(); i++) {
             Category tempObj = (Category) overview.get(i);

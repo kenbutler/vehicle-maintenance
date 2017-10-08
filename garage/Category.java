@@ -43,7 +43,6 @@ public class Category {
         // Defaults
         setDate(new SimpleDateFormat("MM/dd/yyyy").parse("01/01/1900"));
         setMileage(0);
-        setNeedService(false);
         setCategoryGrid();
     }
 
@@ -94,13 +93,30 @@ public class Category {
         this.mileageLbl.setText(mileage.toString());
     }
 
-    public Boolean getNeedService() { return this.needService; }
-    public void setNeedService(Boolean needService) {
-        this.needService = needService;
-        if (this.needService) {
-            this.titleLbl.setStyle("-fx-text-fill: red;");
+    public Boolean getServiceNeeds() { return this.needService; }
+    public void setServiceNeeds(Integer currMiles) {
+
+        Boolean miles = ((currMiles - this.mileage) > this.limitMiles);
+        Boolean months = false; // TODO
+
+        if (miles || months) {
+            this.needService = true;
+            if (miles) {
+                this.mileageLbl.setStyle("-fx-background-color: red;");
+                this.limitMilesLbl.setStyle("-fx-background-color: red;");
+            } else {
+                this.mileageLbl.setId("detail");
+                this.limitMilesLbl.setId("detail");
+            }
+            if (months) {
+                this.dateLbl.setStyle("-fx-background-color: red;");
+                this.limitMonthsLbl.setStyle("-fx-background-color: red;");
+            } else {
+                this.dateLbl.setId("detail");
+                this.limitMonthsLbl.setId("detail");
+            }
         } else {
-            this.titleLbl.setId("title");
+            this.needService = false;
         }
     }
 
@@ -112,7 +128,7 @@ public class Category {
         categoryGrid.add(titleLbl, 0, 0);
         categoryGrid.add(dateLbl, 1, 0);
         categoryGrid.add(mileageLbl, 2, 0);
-        categoryGrid.add(limitMilesLbl, 3, 0);
-        categoryGrid.add(limitMonthsLbl, 4, 0);
+        categoryGrid.add(limitMonthsLbl, 3, 0);
+        categoryGrid.add(limitMilesLbl, 4, 0);
     }
 }
