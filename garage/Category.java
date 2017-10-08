@@ -29,6 +29,13 @@ public class Category {
     private Label limitMonthsLbl = new Label();
 
     public Category(String[] lineArray) throws ParseException {
+        // Set label CSS features
+        titleLbl.setId("title");
+        dateLbl.setId("detail");
+        mileageLbl.setId("detail");
+        limitMonthsLbl.setId("detail");
+        limitMilesLbl.setId("detail");
+        //
         setCategory(lineArray[0]);
         setTitle(lineArray[1]);
         setLimitMiles(Integer.parseInt(lineArray[2]));
@@ -52,7 +59,7 @@ public class Category {
     }
     public void setTitle(String str) {
         this.title = str;
-        this.titleLbl.setStyle("-fx-text-fill: red;");
+        this.titleLbl.setText(str);
     }
 
     public Integer getLimitMiles() {
@@ -60,7 +67,7 @@ public class Category {
     }
     public void setLimitMiles(Integer miles) {
         this.limitMiles = miles;
-        this.limitMilesLbl.setStyle("-fx-text-fill: red;");
+        this.limitMonthsLbl.setText(miles.toString());
     }
 
     public Integer getLimitMonths() {
@@ -68,7 +75,7 @@ public class Category {
     }
     public void setLimitMonths(Integer months) {
         this.limitMonths = months;
-        this.limitMonthsLbl.setStyle("-fx-text-fill: red;");
+        this.limitMonthsLbl.setText(months.toString());
     }
 
     public Date getDate() { return this.date; }
@@ -78,13 +85,13 @@ public class Category {
     }
     public void setDate(Date date) {
         this.date = date;
-        this.dateLbl.setStyle("-fx-text-fill: red;");
+        this.dateLbl.setText(getDateString());
     }
 
     public Integer getMileage() { return this.mileage; }
     public void setMileage(Integer mileage) {
         this.mileage = mileage;
-        this.mileageLbl.setStyle("-fx-text-fill: red;");
+        this.mileageLbl.setText(mileage.toString());
     }
 
     public Boolean getNeedService() { return this.needService; }
@@ -96,6 +103,7 @@ public class Category {
         return this.categoryGrid;
     }
     private void setCategoryGrid() {
+        categoryGrid.setGridLinesVisible(true);
         categoryGrid.add(titleLbl, 0, 0);
         categoryGrid.add(dateLbl, 1, 0);
         categoryGrid.add(mileageLbl, 2, 0);

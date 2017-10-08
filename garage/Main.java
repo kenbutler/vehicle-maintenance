@@ -78,9 +78,13 @@ public class Main extends Application {
         overviewGrid.setGridLinesVisible(true);
         overviewGrid.setStyle("-fx-alignment: TOP-CENTER;");
         // Add column headers
+
+        Label hdrTitle = new Label("Title");
+        hdrTitle.setId("category");
+        overviewGrid.add(hdrTitle, 0, 1);
         Label hdrStatus = new Label("Status");
         hdrStatus.setId("category");
-        overviewGrid.add(hdrStatus, 1, 0);
+        overviewGrid.add(hdrStatus, 1, 0, 2, 1);
         Label hdrDate = new Label("Date");
         hdrDate.setId("category");
         overviewGrid.add(hdrDate, 1, 1);
@@ -89,31 +93,21 @@ public class Main extends Application {
         overviewGrid.add(hdrMileage, 2, 1);
         Label hdrLimits = new Label("Limits");
         hdrLimits.setId("category");
-        overviewGrid.add(hdrLimits, 3, 0);
+        overviewGrid.add(hdrLimits, 3, 0, 2, 1);
         Label hdrLimitsMiles = new Label("Miles");
         hdrLimitsMiles.setId("category");
         overviewGrid.add(hdrLimitsMiles, 3, 1);
         Label hdrLimitsMonths = new Label("Months");
         hdrLimitsMonths.setId("category");
         overviewGrid.add(hdrLimitsMonths, 4, 1);
+
+        /*
         for (int i=0; i < overview.size(); i++) {
             Category tempObj = (Category) overview.get(i);
-            Label title = new Label(tempObj.getTitle());
-            title.setId("title");
-            Label date = new Label(tempObj.getDateString());
-            date.setId("detail");
-            Label mileage = new Label(tempObj.getMileage().toString());
-            mileage.setId("detail");
-            Label limitMiles = new Label(tempObj.getLimitMiles().toString());
-            limitMiles.setId("detail");
-            Label limitMonths = new Label(tempObj.getLimitMonths().toString());
-            limitMonths.setId("detail");
-            overviewGrid.add(title, 0, 2 + i);
-            overviewGrid.add(date, 1, 2 + i);
-            overviewGrid.add(mileage, 2, 2 + i);
-            overviewGrid.add(limitMiles, 3, 2 + i);
-            overviewGrid.add(limitMonths, 4, 2 + i);
+            GridPane tempGrid = tempObj.getCategoryGrid();
+            overviewGrid.add(tempGrid, 0, 2 + i, 5, 1);
         }
+        */
         overviewPane.getChildren().addAll(overviewGrid);
         AnchorPane.setLeftAnchor(overviewGrid, 0.0);
         AnchorPane.setRightAnchor(overviewGrid, 0.0);

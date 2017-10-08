@@ -24,7 +24,7 @@
 
 #title {
     -fx-font-size: 16;
-    -fx-min-width: 150px;
+    -fx-min-width: 300px;
     -fx-padding: 0 20 0 10;
     -fx-alignment: CENTER-LEFT;
 }
