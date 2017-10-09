@@ -94,10 +94,11 @@ public class Category {
     }
 
     public Boolean getServiceNeeds() { return this.needService; }
-    public void setServiceNeeds(Integer currMiles) {
+    public void setServiceNeeds(Date recentDate, Integer recentMileage) {
 
-        Boolean miles = ((currMiles - this.mileage) > this.limitMiles);
-        Boolean months = false; // TODO
+        Boolean miles = ((recentMileage - this.mileage) > this.limitMiles);
+        int monthsBetween = Months.month
+        Boolean months = ; // TODO
 
         if (miles || months) {
             this.needService = true;

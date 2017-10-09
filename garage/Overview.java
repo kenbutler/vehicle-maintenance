@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -15,14 +16,56 @@ public class Overview extends ArrayList<Object> {
 
     private boolean DEBUG = false;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
+    private State current = new State();
 
-    public Overview(String file) throws IOException {
-        readData(file);
-        loadData();
+    public Overview(String fOverview, String fState) throws IOException, ParseException {
+        readCategoryData(fOverview);
+        readNewestData(fState);
     }
 
-    public void readData (String csvFile) throws IOException {
+    public void readNewestData (String csvFile) throws IOException {
 
+        // Parameters for reading CSV files
+        BufferedReader br = null;
+        String line = "";
+        String csvSplitBy = ",";
+
+        try {
+            br = new BufferedReader(new FileReader(baseLocation + csvFile));
+
+            line = br.readLine();
+            if (line != null) {
+                String[] lineArray = line.split(csvSplitBy);
+                if (lineArray.length == 2) {
+                    // Correctly formatted data
+                    current.setDate(new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]));
+                    current.setMileage(Integer.parseInt(lineArray[1]));
+                } else {
+                    // TODO throw error!
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // End try to populate / exception handler
+
+    } // End ReadLogData()
+
+    public void readCategoryData (String csvFile) throws IOException {
+
+        // Parameters for reading CSV files
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
@@ -68,7 +111,7 @@ public class Overview extends ArrayList<Object> {
             }
         } // End try to populate / exception handler
 
-    } // End ReadData()
+    } // End ReadLogData()
 
     public void analyzeLog(Log log) {
 
@@ -91,7 +134,7 @@ public class Overview extends ArrayList<Object> {
 
         for (int i=0; i < this.size(); i++) {
             // Check for service needs
-            ((Category) this.get(i)).setServiceNeeds(46000); // TODO fill with actual current mileage and date
+            ((Category) this.get(i)).setServiceNeeds(current.getDateNumeric(), current.getMileage());
         }
 
         if (DEBUG) {
@@ -99,14 +142,6 @@ public class Overview extends ArrayList<Object> {
                 Category cat = (Category) this.get(i);
                 System.out.format("%s last changed %s\n", cat.getTitle(), cat.getDateString());
             }
-        }
-    }
-
-    public void loadData() {
-
-        // Loop through data and load to
-        for (int i=0; i < this.size(); i++) {
-            //Controller.setData(data[i]);
         }
     }
 

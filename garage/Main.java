@@ -16,7 +16,7 @@ import java.text.ParseException;
 
 public class Main extends Application {
 
-    public Overview overview = new Overview("overview.csv");
+    public Overview overview = new Overview("overview.csv", "current.csv");
     public Log log = new Log();
 
     private TabPane tabPane = new TabPane();
@@ -29,8 +29,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        //initialize();
 
         //Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
 
@@ -159,7 +157,7 @@ public class Main extends Application {
         logTab.setContent(logAnchorPane);
     }
 
-    public Main() throws IOException {
+    public Main() throws IOException, ParseException {
     }
 
 

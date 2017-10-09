@@ -14,16 +14,15 @@ import java.util.Locale;
  */
 public class Item {
 
-    private Date date;
-    private Integer mileage;
+    private State state = new State();
     private String title;
     private String company = "???";
     private Double price = 0.0;
     private String notes = "";
 
     public Item(String[] lineArray) throws ParseException {
-        date = new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]);
-        mileage = Integer.parseInt(lineArray[1]);
+        state.setDate(new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]));
+        state.setMileage(Integer.parseInt(lineArray[1]));
         title = lineArray[2];
         company = lineArray[3];
         price = Double.parseDouble(lineArray[4].replaceAll("[^\\d.]+", "")); // TODO: Make money value
@@ -32,57 +31,50 @@ public class Item {
         }
     }
 
+    // Title
     public String getTitle() {
         return this.title;
     }
-    public Boolean setTitle(String str) {
+    public void setTitle(String str) {
         this.title = str;
-        return true;
     }
 
+    // Date
     public Date getDateNumeric() {
-        return this.date;
+        return this.state.getDateNumeric();
     }
     public String getDate() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return df.format(this.date);
+        return df.format(this.state.getDateNumeric());
     }
-    public Boolean setDate(Date date) {
-        this.date = date;
-        return true;
-    }
+    public void setDate(Date date) { this.state.setDate(date); }
 
+    // Mileage
     public Integer getMileage() {
-        return this.mileage;
+        return this.state.getMileage();
     }
-    public String getMileageString() {
-        return NumberFormat.getNumberInstance(Locale.US).format(this.mileage);
-    }
-    public Boolean setMileage(Integer miles) {
-        this.mileage = miles;
-        return true;
+    public String getMileageString() { return NumberFormat.getNumberInstance(Locale.US).format(this.state.getMileage()); }
+    public void setMileage(Integer miles) {
+        this.state.setMileage(miles);
     }
 
+    // Company
     public String getCompany() { return this.company; }
-    public Boolean setCompany(String company) {
+    public void setCompany(String company) {
         this.company = company;
-        return true;
     }
 
+    // Price
     public BigDecimal getPrice() {
-        //NumberFormat nf = NumberFormat.getCurrencyInstance();
-        //nf.setCurrency(Currency.getInstance("USD"));
-        BigDecimal bd = new BigDecimal(this.price).setScale(2, BigDecimal.ROUND_DOWN);
-        return bd;
+        return new BigDecimal(this.price).setScale(2, BigDecimal.ROUND_DOWN);
     }
-    public Boolean setPrice(Double price) {
+    public void setPrice(Double price) {
         this.price = price;
-        return true;
     }
 
+    // Notes
     public String getNotes() { return this.notes; }
-    public Boolean setNotes(String notes) {
+    public void setNotes(String notes) {
         this.notes = notes;
-        return true;
     }
 }
