@@ -3,15 +3,10 @@ package garage;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -41,12 +36,12 @@ public class Category {
         mileageLbl.setId("detail");
         limitMonthsLbl.setId("detail");
         limitMilesLbl.setId("detail");
-        //
+        // Initialize member variables from input string array
         setCategory(lineArray[0]);
         setTitle(lineArray[1]);
         setLimitMiles(Integer.parseInt(lineArray[2]));
         setLimitMonths(Integer.parseInt(lineArray[3]));
-        // Defaults
+        // Defaults - to be set using analyzeLog() method
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         /*
            Locale specifies human language for translating, and cultural norms
@@ -119,7 +114,7 @@ public class Category {
         }
 
         // In need of service - due to time/months
-        double daysBetween = Duration.between(recentDate.atStartOfDay(), this.date.atStartOfDay()).toDays();
+        double daysBetween = Duration.between(this.date.atStartOfDay(), recentDate.atStartOfDay()).toDays();
         final double avgDaysInMonth = 30.42;
         Boolean months = false;
         if (this.limitMonths > 0) {
