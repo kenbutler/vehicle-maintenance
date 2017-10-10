@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
@@ -12,24 +14,31 @@ import java.util.Locale;
  */
 public class State {
 
-    private Date date = new Date();
+    private LocalDate date = null;
     private Integer mileage;
 
     public State() throws ParseException {
         // Initialize member variables
-        date = new SimpleDateFormat("MM/dd/yyyy").parse("1/1/1900");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        /*
+           Locale specifies human language for translating, and cultural norms
+           for lowercase/uppercase and abbreviations and such.
+           Example: Locale.US
+         */
+        formatter = formatter.withLocale( Locale.US );
+        date = LocalDate.parse("01/01/1900", formatter);
         mileage = 0;
     }
 
     // Date
-    public Date getDateNumeric() {
+    public LocalDate getDateNumeric() {
         return this.date;
     }
     public String getDate() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         return df.format(this.date);
     }
-    public void setDate(Date date) { this.date = date; }
+    public void setDate(LocalDate date) { this.date = date; }
 
     // Mileage
     public Integer getMileage() {

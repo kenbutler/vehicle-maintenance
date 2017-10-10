@@ -6,7 +6,13 @@ import javafx.scene.layout.GridPane;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by kenbutler on 9/26/17.
@@ -15,7 +21,7 @@ public class Category {
 
     private String category = null;
     private String title = null;
-    private Date date = null;
+    private LocalDate date = null;
     private int mileage = 0;
     private int limitMiles = 0;
     private int limitMonths = 0;
@@ -41,7 +47,14 @@ public class Category {
         setLimitMiles(Integer.parseInt(lineArray[2]));
         setLimitMonths(Integer.parseInt(lineArray[3]));
         // Defaults
-        setDate(new SimpleDateFormat("MM/dd/yyyy").parse("01/01/1900"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        /*
+           Locale specifies human language for translating, and cultural norms
+           for lowercase/uppercase and abbreviations and such.
+           Example: Locale.US
+         */
+        formatter = formatter.withLocale( Locale.US );
+        setDate(LocalDate.parse("01/01/1900", formatter));
         setMileage(0);
         setCategoryGrid();
     }
@@ -77,12 +90,13 @@ public class Category {
         this.limitMonthsLbl.setText(months.toString());
     }
 
-    public Date getDate() { return this.date; }
+    public LocalDate getDate() { return this.date; }
     public String getDateString() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        return df.format(this.date);
+        return this.date.toString();
+        //DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        //return df.format(this.date);
     }
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
         this.dateLbl.setText(getDateString());
     }
@@ -94,11 +108,13 @@ public class Category {
     }
 
     public Boolean getServiceNeeds() { return this.needService; }
-    public void setServiceNeeds(Date recentDate, Integer recentMileage) {
+    public void setServiceNeeds(LocalDate recentDate, Integer recentMileage) {
 
         Boolean miles = ((recentMileage - this.mileage) > this.limitMiles);
-        int monthsBetween = Months.month
-        Boolean months = ; // TODO
+
+        double daysBetween = Duration.between(recentDate.atStartOfDay(), this.date.atStartOfDay()).toDays();
+        final double avgDaysInMonth = 30.42;
+        Boolean months = ((daysBetween / avgDaysInMonth) >= this.limitMonths); // TODO
 
         if (miles || months) {
             this.needService = true;

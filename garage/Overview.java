@@ -6,7 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -29,6 +32,8 @@ public class Overview extends ArrayList<Object> {
         BufferedReader br = null;
         String line = "";
         String csvSplitBy = ",";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        formatter = formatter.withLocale( Locale.US );
 
         try {
             br = new BufferedReader(new FileReader(baseLocation + csvFile));
@@ -38,7 +43,7 @@ public class Overview extends ArrayList<Object> {
                 String[] lineArray = line.split(csvSplitBy);
                 if (lineArray.length == 2) {
                     // Correctly formatted data
-                    current.setDate(new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]));
+                    current.setDate(LocalDate.parse(lineArray[0], formatter));
                     current.setMileage(Integer.parseInt(lineArray[1]));
                 } else {
                     // TODO throw error!
@@ -48,8 +53,6 @@ public class Overview extends ArrayList<Object> {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
             e.printStackTrace();
         } finally {
             if (br != null) {
@@ -122,7 +125,7 @@ public class Overview extends ArrayList<Object> {
                 Category cat = (Category) this.get(j);
                 if (Objects.equals(cat.getTitle(), item.getTitle())) {
                     // Compare dates
-                    if (item.getDateNumeric().after(cat.getDate())) {
+                    if (item.getDateNumeric().isAfter(cat.getDate())) {
                         // Update date
                         ((Category) this.get(j)).setDate(item.getDateNumeric());
                         // Update mileage

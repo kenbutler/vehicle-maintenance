@@ -5,6 +5,8 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
@@ -21,7 +23,9 @@ public class Item {
     private String notes = "";
 
     public Item(String[] lineArray) throws ParseException {
-        state.setDate(new SimpleDateFormat("MM/dd/yyyy").parse(lineArray[0]));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        formatter = formatter.withLocale( Locale.US );
+        state.setDate(LocalDate.parse("1/1/1900", formatter));
         state.setMileage(Integer.parseInt(lineArray[1]));
         title = lineArray[2];
         company = lineArray[3];
@@ -40,14 +44,14 @@ public class Item {
     }
 
     // Date
-    public Date getDateNumeric() {
+    public LocalDate getDateNumeric() {
         return this.state.getDateNumeric();
     }
     public String getDate() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         return df.format(this.state.getDateNumeric());
     }
-    public void setDate(Date date) { this.state.setDate(date); }
+    public void setDate(LocalDate date) { this.state.setDate(date); }
 
     // Mileage
     public Integer getMileage() {
