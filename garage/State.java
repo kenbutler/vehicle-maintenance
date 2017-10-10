@@ -35,8 +35,9 @@ public class State {
         return this.date;
     }
     public String getDate() {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return df.format(this.date);
+        return this.date.toString(); // FIXME
+        //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        //return df.format(this.date);
     }
     public void setDate(LocalDate date) { this.date = date; }
 

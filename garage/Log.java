@@ -21,7 +21,7 @@ import javafx.scene.control.TableView;
 public class Log extends ArrayList<Object>{
 
     // Variables here
-    private boolean DEBUG = false;
+    private boolean DEBUG = true;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
     public Log() throws IOException {

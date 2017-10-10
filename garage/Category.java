@@ -98,7 +98,11 @@ public class Category {
     }
     public void setDate(LocalDate date) {
         this.date = date;
-        this.dateLbl.setText(getDateString());
+        if (date.getYear() == 1900) {
+            this.dateLbl.setText("---");
+        } else {
+            this.dateLbl.setText(getDateString());
+        }
     }
 
     public Integer getMileage() { return this.mileage; }

@@ -25,7 +25,7 @@ public class Item {
     public Item(String[] lineArray) throws ParseException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         formatter = formatter.withLocale( Locale.US );
-        state.setDate(LocalDate.parse("1/1/1900", formatter));
+        state.setDate(LocalDate.parse(lineArray[0], formatter));
         state.setMileage(Integer.parseInt(lineArray[1]));
         title = lineArray[2];
         company = lineArray[3];
@@ -48,8 +48,9 @@ public class Item {
         return this.state.getDateNumeric();
     }
     public String getDate() {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return df.format(this.state.getDateNumeric());
+        return this.state.getDate().toString(); // FIXME
+        //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        //return df.format(this.state.getDateNumeric());
     }
     public void setDate(LocalDate date) { this.state.setDate(date); }
 
