@@ -67,30 +67,16 @@ public class Main extends Application {
         overviewGrid.setPadding(new Insets(0, 0, 5, 0));
         overviewGrid.setGridLinesVisible(false);
         overviewGrid.setStyle("-fx-alignment: TOP-CENTER;");
-        // Add column headers
 
-        Label hdrTitle = new Label("Title");
-        hdrTitle.setId("category");
-        hdrTitle.setStyle("-fx-min-width: 300px;"); // Important width alteration for formatting
-        overviewGrid.add(hdrTitle, 0, 1);
-        Label hdrStatus = new Label("Status");
-        hdrStatus.setId("header");
-        overviewGrid.add(hdrStatus, 1, 0, 2, 1);
-        Label hdrDate = new Label("Date");
-        hdrDate.setId("category");
-        overviewGrid.add(hdrDate, 1, 1);
-        Label hdrMileage = new Label("Mileage");
-        hdrMileage.setId("category");
-        overviewGrid.add(hdrMileage, 2, 1);
-        Label hdrLimits = new Label("Limits");
-        hdrLimits.setId("header");
-        overviewGrid.add(hdrLimits, 3, 0, 2, 1);
-        Label hdrLimitsMonths = new Label("Months");
-        hdrLimitsMonths.setId("category");
-        overviewGrid.add(hdrLimitsMonths, 3, 1);
-        Label hdrLimitsMiles = new Label("Miles");
-        hdrLimitsMiles.setId("category");
-        overviewGrid.add(hdrLimitsMiles, 4, 1);
+        // Add current state
+        overviewGrid.add(overview.getCurrentDisplay(), 0, 0);
+
+        // Add column headers
+        OverviewHeader overviewHeader = new OverviewHeader();
+        GridPane hdrGrid = overviewHeader.getHdrGrid();
+        overviewGrid.add(hdrGrid, 0, 1);
+
+        Label currentState = new Label();
 
         for (int i=0; i < overview.size(); i++) {
             Category tempObj = (Category) overview.get(i);

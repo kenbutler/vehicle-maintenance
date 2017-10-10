@@ -3,7 +3,14 @@
     -fx-alignment: center;
     -fx-border-style: solid;
     -fx-border-width: 2px;
-    -fx-min-width: 310px;
+    -fx-min-width: 800px;
+}
+
+#stateLbl {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-min-width: 300px;
+    -fx-alignment: center;
 }
 
 #header {

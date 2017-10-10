@@ -1,5 +1,9 @@
 package garage;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -146,6 +150,13 @@ public class Overview extends ArrayList<Object> {
                 System.out.format("%s last changed %s\n", cat.getTitle(), cat.getDateString());
             }
         }
+    }
+
+    public GridPane getCurrentDisplay() {
+        GridPane tmpGrid = new GridPane();
+        tmpGrid.add(current.getStateLabel(), 0, 0);
+        tmpGrid.add(new Button("Update"), 1, 0);
+        return tmpGrid;
     }
 
 }
