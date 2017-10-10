@@ -93,8 +93,6 @@ public class Category {
     public LocalDate getDate() { return this.date; }
     public String getDateString() {
         return this.date.toString();
-        //DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        //return df.format(this.date);
     }
     public void setDate(LocalDate date) {
         this.date = date;
@@ -114,11 +112,19 @@ public class Category {
     public Boolean getServiceNeeds() { return this.needService; }
     public void setServiceNeeds(LocalDate recentDate, Integer recentMileage) {
 
-        Boolean miles = ((recentMileage - this.mileage) > this.limitMiles);
+        // In need of service - due to miles
+        Boolean miles = false;
+        if (this.limitMiles > 0) {
+            miles = ((recentMileage - this.mileage) > this.limitMiles);
+        }
 
+        // In need of service - due to time/months
         double daysBetween = Duration.between(recentDate.atStartOfDay(), this.date.atStartOfDay()).toDays();
         final double avgDaysInMonth = 30.42;
-        Boolean months = ((daysBetween / avgDaysInMonth) >= this.limitMonths); // TODO
+        Boolean months = false;
+        if (this.limitMonths > 0) {
+            months = ((daysBetween / avgDaysInMonth) >= this.limitMonths); // TODO
+        }
 
         if (miles || months) {
             this.needService = true;
