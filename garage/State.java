@@ -55,15 +55,4 @@ public class State {
     public void setMileage(Integer miles) {
         this.mileage = miles;
     }
-
-    // GridPane package, mainly for
-    public Label getStateLabel() {
-        Label lbl = new Label();
-        lbl.setText("Current state: " + this.mileage.toString() + " miles on " + this.date.toString());
-        lbl.setPadding(new Insets(20, 20, 20, 20));
-        lbl.setAlignment(Pos.BOTTOM_CENTER);
-        lbl.setMinWidth(800);
-        lbl.setId("stateLbl");
-        return lbl;
-    }
 }

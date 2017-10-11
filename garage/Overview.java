@@ -2,6 +2,7 @@ package garage;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.io.BufferedReader;
@@ -23,7 +24,7 @@ public class Overview extends ArrayList<Object> {
 
     private boolean DEBUG = false;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
-    private State current = new State();
+    private CurrentState current = new CurrentState();
 
     public Overview(String fOverview, String fState) throws IOException, ParseException {
         readCategoryData(fOverview);
@@ -152,11 +153,8 @@ public class Overview extends ArrayList<Object> {
         }
     }
 
-    public GridPane getCurrentDisplay() {
-        GridPane tmpGrid = new GridPane();
-        tmpGrid.add(current.getStateLabel(), 0, 0);
-        tmpGrid.add(new Button("Update"), 1, 0);
-        return tmpGrid;
+    public AnchorPane getCurrentDisplay() {
+        return current.getGridPane();
     }
 
 }

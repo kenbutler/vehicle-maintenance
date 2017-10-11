@@ -68,15 +68,13 @@ public class Main extends Application {
         overviewGrid.setGridLinesVisible(false);
         overviewGrid.setStyle("-fx-alignment: TOP-CENTER;");
 
-        // Add current state
+        // Add current state pane
         overviewGrid.add(overview.getCurrentDisplay(), 0, 0);
 
-        // Add column headers
+        // Add column headers grid
         OverviewHeader overviewHeader = new OverviewHeader();
         GridPane hdrGrid = overviewHeader.getHdrGrid();
         overviewGrid.add(hdrGrid, 0, 1);
-
-        Label currentState = new Label();
 
         for (int i=0; i < overview.size(); i++) {
             Category tempObj = (Category) overview.get(i);
