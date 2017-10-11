@@ -48,10 +48,6 @@ public class Main extends Application {
         overview.analyzeLog(log);
     }
 
-    public void handleClick() {
-        //log.loadData();
-    }
-
     private void addElements(StackPane root) {
         addOverviewElements();
         addLogElements();
@@ -62,6 +58,8 @@ public class Main extends Application {
     }
 
     private void addOverviewElements() {
+
+        // Overview GridPane
         overviewGrid.setMinHeight(450);
         overviewGrid.setMinWidth(800);
         overviewGrid.setPadding(new Insets(0, 0, 5, 0));
@@ -71,7 +69,7 @@ public class Main extends Application {
         // Add current state pane
         overviewGrid.add(overview.getCurrentDisplay(), 0, 0);
 
-        // Add column headers grid
+        // Add Overview header GridPane
         OverviewHeader overviewHeader = new OverviewHeader();
         GridPane hdrGrid = overviewHeader.getHdrGrid();
         overviewGrid.add(hdrGrid, 0, 1);
@@ -81,6 +79,7 @@ public class Main extends Application {
             GridPane tempGrid = tempObj.getCategoryGrid();
             overviewGrid.add(tempGrid, 0, 2 + i, 5, 1);
         }
+        // Add Overview GridPane to Overview Pane
         overviewPane.getChildren().addAll(overviewGrid);
         AnchorPane.setLeftAnchor(overviewGrid, 0.0);
         AnchorPane.setRightAnchor(overviewGrid, 0.0);

@@ -1,16 +1,12 @@
 package garage;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -68,8 +64,7 @@ public class Overview extends ArrayList<Object> {
                 }
             }
         } // End try to populate / exception handler
-
-    } // End ReadLogData()
+    }
 
     public void readCategoryData (String csvFile) throws IOException {
 
@@ -118,8 +113,7 @@ public class Overview extends ArrayList<Object> {
                 }
             }
         } // End try to populate / exception handler
-
-    } // End ReadLogData()
+    }
 
     public void analyzeLog(Log log) {
 

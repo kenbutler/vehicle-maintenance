@@ -1,14 +1,10 @@
 package garage;
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Currency;
-import java.util.Date;
 import java.util.Locale;
 
 /**

@@ -1,14 +1,12 @@
 package garage;
 
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-import java.beans.EventHandler;
 import java.text.ParseException;
 
 /**
@@ -20,21 +18,19 @@ public class CurrentState extends State {
     Button btnUpdate = new Button("Update");
 
     public CurrentState() throws ParseException {
+        //
         lbl.setText("Current mileage: " + this.getMileageString() + " miles, as of " + this.getDate());
-
-        btnUpdate.setOnAction((ActionEvent event) -> {
-            updatePanel();
-        });
+        btnUpdate.setOnAction((ActionEvent event) -> updatePanel());
+        //
     }
 
-    // GridPane package, mainly for
     public Label getStateLabel() {
         Label lbl = new Label();
-        lbl.setText("Current state: " + this.getMileageString() + " miles as of " + this.getDate());
-        lbl.setPadding(new Insets(20, 20, 20, 20));
-        lbl.setAlignment(Pos.BOTTOM_CENTER);
-        lbl.setMinWidth(800);
+        //
         lbl.setId("stateLbl");
+        lbl.setText("Current state: " + this.getMileageString() + " miles as of " + this.getDate());
+        lbl.setMinWidth(800);
+        //
         return lbl;
     }
 
@@ -51,7 +47,7 @@ public class CurrentState extends State {
         tmpPane.getChildren().add(tmpGrid);
         AnchorPane.setLeftAnchor(tmpGrid, 0.0);
         AnchorPane.setRightAnchor(tmpGrid, 0.0);
-
+        //
         return tmpPane;
     }
 

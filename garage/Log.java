@@ -1,9 +1,7 @@
 package garage;
 
-import com.sun.tools.javac.util.Name;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -21,16 +19,13 @@ import javafx.scene.control.TableView;
 public class Log extends ArrayList<Object>{
 
     // Variables here
-    private boolean DEBUG = true;
+    private boolean DEBUG = false;
     private String baseLocation = "/Users/kenbutler/IdeaProjects/Vehicle/src/garage/";
 
     public Log() throws IOException {
         // Init here
         String file = "log.csv";
         readData(file);
-    }
-
-    public void handleClick() {
     }
 
     public void readData (String csvFile) throws IOException {
